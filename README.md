@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Faced with problems
+
+The carousel.css file has a property called aspect-ratio inside a class called slider that i don't understand.
+
 ## Available Scripts
 
 In the project directory, you can run:
