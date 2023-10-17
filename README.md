@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Faced with problems
 
-The carousel.css file has a property called aspect-ratio inside a class called slider that i don't understand.
+carousel er code bujhi na
 
 <!-- ## Available Scripts
 
