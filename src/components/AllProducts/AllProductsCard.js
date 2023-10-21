@@ -1,21 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const AllProductsCard = ({ product }) => {
-  console.log("product : ", product);
+  // console.log("product : ", product);
   return (
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <Link to="">
-        <img class="rounded-t-lg" src={product?.url} alt="" />
+      <Link to="" className="lg:w-[274px] lg:h-[278px]">
+        <img
+          class="rounded-t-lg lg:w-[274px] lg:h-[278px]"
+          src={product?.img}
+          alt=""
+        />
       </Link>
       <div class="p-5">
         <Link to="">
           <h5 class="mb-2  text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
-            {product?.title.slice(0, 40)}
+            {product?.product_name.slice(0, 40)}
           </h5>
         </Link>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          <label className="text-lg font-semibold">
+            Price : ৳{product?.recent_price}
+            <del className="ml-2 bg-orange-600 px-2 text-white">
+              ৳ {product?.prvious_price}
+            </del>
+          </label>
         </p>
         <Link
           to=""

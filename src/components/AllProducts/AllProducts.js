@@ -1,6 +1,7 @@
 import React from "react";
 import AllProductsCard from "./AllProductsCard";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../Loading/Loading";
 
 const AllProducts = () => {
   const { isLoading, data: products = [] } = useQuery({
@@ -11,11 +12,12 @@ const AllProducts = () => {
       return data;
     },
   });
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center my-6">
-        Our All Products {products?.length}
-      </h1>
+      <h1 className="text-3xl font-bold text-center my-6">Our All Products</h1>
 
       <div className="grid lg:grid-cols-4 grid-cols-1 gap-3 lg:mx-[104px]">
         {products?.map((product) => (

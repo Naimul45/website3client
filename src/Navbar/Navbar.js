@@ -55,7 +55,7 @@ const Navbar = () => {
               />
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">Sports Store</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 pl-10">
@@ -92,12 +92,15 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="/allproducts"
+            to="/shopallproducts"
             className="pl-4 text-lg font-semibold text-white"
           >
             Shop (All Products)
           </Link>
-          <Link to="/contact" className="pl-4 text-lg font-semibold text-white">
+          <Link
+            to="/contactus"
+            className="pl-4 text-lg font-semibold text-white"
+          >
             Contact Us
           </Link>
           <Link to="/cart" className="pl-4 text-lg font-semibold text-white">
