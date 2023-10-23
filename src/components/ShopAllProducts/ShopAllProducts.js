@@ -4,9 +4,11 @@ import ShopAllProduct from "./ShopAllProduct";
 import Shipping from "../ShippingHomeSection3/Shipping";
 import ProductsOfCategories from "./ProductsOfCategories";
 import Loading from "../Loading/Loading";
+import { useLoaderData } from "react-router-dom";
 
 const ShopAllProducts = () => {
   const [category, setCategory] = useState("");
+  const data = useLoaderData();
 
   const [products, setProducts] = useState([]);
 
@@ -29,7 +31,7 @@ const ShopAllProducts = () => {
   return (
     <>
       <div className="flex lg:mx-[104px] mt-6">
-        <div className="lg:w-[275px] bg-base-200 lg:mr-3">
+        <div className="lg:w-[275px] bg-base-200 lg:h-[458px] lg:mr-3 rounded">
           <div className="p-4">
             <h1 className="text-xl font-semibold">
               PRODUCT CATEGORIES {products?.length}
@@ -113,7 +115,9 @@ const ShopAllProducts = () => {
         <div className="grid lg:grid-cols-3 gap-3">
           {products.length ? (
             products.map((product) => (
-              <ShopAllProduct product={product}></ShopAllProduct>
+              <ShopAllProduct product={product}
+                data={data}
+              ></ShopAllProduct>
             ))
           ) : (
             <h1 className="text-3xl   font-semibold">

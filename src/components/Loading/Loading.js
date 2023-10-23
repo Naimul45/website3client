@@ -3,7 +3,8 @@ import React from "react";
 const Loading = () => {
   return (
     <>
-      <div role="status" className="mx-[50%] my-[10%]">
+      <span className="loading loading-dots  mx-[50%] my-[10%] w-16 h-16 text-red-500  "></span>
+      {/* <div role="status" className="mx-[50%] my-[10%]">
         <svg
           aria-hidden="true"
           className="inline w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-pink-600"
@@ -21,7 +22,7 @@ const Loading = () => {
           />
         </svg>
         <span class="sr-only">Loading...</span>
-      </div>
+      </div> */}
     </>
   );
 };

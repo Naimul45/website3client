@@ -1,7 +1,10 @@
-.visitOurFacebookAppNavbar{
-    background-color: #7C81AD;
-    color:white
+.visitOurFacebookAppNavbar {
+  background-color: #7c81ad;
+  color: white;
 }
-.navbar3rdpart{
-  background-color:#618264 ;
+.navbar3rdpart {
+  background-color: #618264;
+}
+.sidebarBackground {
+  background-color: #e5dbd0;
 }

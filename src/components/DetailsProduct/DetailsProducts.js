@@ -7,6 +7,15 @@ const DetailsProducts = () => {
   const data = useLoaderData();
   // console.log("especific data :", data);
 
+  // const [total, setTotal] = useState(null);
+  // const [subtotal, setSubtotal] = useState(null);
+  // const finaltotal = total + subtotal;
+  // console.log("finaltotal", finaltotal);
+
+  // if (total) {
+  //   setSubtotal(total);
+  // }
+
   const plus = () => {
     const valueOfPlus = value + 1;
     setValue(valueOfPlus);
@@ -25,6 +34,9 @@ const DetailsProducts = () => {
       recentPrice: data[0].recent_price,
       previousPrice: data[0].prvious_price,
     };
+
+    // const totalPrice = info.quantity * info.recentPrice;
+    // setTotal(totalPrice);
     console.log("information : ", info);
 
     fetch("http://localhost:5000/addtocart", {
@@ -38,6 +50,7 @@ const DetailsProducts = () => {
       .then((data) => {
         console.log(data);
         toast.success("AddToCart successful!");
+        window.location.reload();
       })
       .catch((error) => {
         // console.log(error);
@@ -46,6 +59,7 @@ const DetailsProducts = () => {
   };
 
   return (
+    // flex lg:flex-row flex-col addtocart
     <div className="card card-side bg-base-100  lg:mx-[90px] lg:mt-4">
       <figure className="border border-solid-2 border-purple-600 rounded-none ">
         <img
