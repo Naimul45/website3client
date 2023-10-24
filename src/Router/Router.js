@@ -3,8 +3,10 @@ import Checkout from "../components/Checkout/Checkout";
 import ContactUs from "../components/ContactUs/ContactUs";
 import DetailsProducts from "../components/DetailsProduct/DetailsProducts";
 import Home from "../components/Home/Home";
+import Login from "../components/Login/Login";
 import Orders from "../components/Orders/Orders";
 import ShopAllProducts from "../components/ShopAllProducts/ShopAllProducts";
+import Signup from "../components/Signup/Signup";
 import Main from "../layout/Main";
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout></Checkout>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
       },
     ],
   },

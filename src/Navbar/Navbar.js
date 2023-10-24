@@ -83,7 +83,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end lg:w-[331px]">
-          <Link to="/" className="border-r-2 border-slate-400 pr-3">
+          <Link to="/login" className="border-r-2 border-slate-400 pr-3">
             <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:ml-[30px] " />
             <p>My Account</p>
           </Link>
@@ -114,7 +114,7 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
-          <Link to="/cart" className="pl-4 text-lg font-semibold text-white">
+          <Link to="/orders" className="pl-4 text-lg font-semibold text-white">
             Cart
           </Link>
         </div>
@@ -195,9 +195,12 @@ const Navbar = () => {
                       View Cart
                     </button>
                   </Link>
-                  <button className="btn bg-cyan-700 text-white w-full hover:bg-rose-800 mt-2">
-                    Buy Now
-                  </button>
+                  <Link to="/checkout">
+                    {" "}
+                    <button className="btn bg-cyan-700 text-white w-full hover:bg-rose-800 mt-2">
+                      Checkout
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
