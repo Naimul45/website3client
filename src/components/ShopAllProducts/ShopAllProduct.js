@@ -1,7 +1,8 @@
 // import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
-// import Loading from "../Loading/Loading";
+import Loading from "../Loading/Loading";
 
 const ShopAllProduct = ({ product }) => {
   return (

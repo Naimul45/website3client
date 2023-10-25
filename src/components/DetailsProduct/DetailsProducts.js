@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const DetailsProducts = () => {
+  const { user } = useContext(AuthContext);
   const [value, setValue] = useState(1);
   const data = useLoaderData();
   // console.log("especific data :", data);
@@ -98,16 +100,35 @@ const DetailsProducts = () => {
                 -
               </label>
             </div>
-            <button
-              className="btn hover:bg-blue-700 lg:w-[320px] bg-orange-600 text-white "
-              onClick={() => handleProduct()}
-            >
-              Add To Cart
-            </button>
+
+            {user ? (
+              <button
+                className="btn hover:bg-blue-700 lg:w-[320px] bg-orange-600 text-white "
+                onClick={() => handleProduct()}
+              >
+                Add To Cart
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="btn hover:bg-blue-700 lg:w-[320px] bg-orange-600 text-white ">
+                  Add To Cart
+                </button>
+              </Link>
+            )}
           </div>
-          <button className="btn hover:bg-blue-700  lg:w-[440px] bg-orange-600 text-white mt-3">
-            Buy Now
-          </button>
+          {user ? (
+            <Link to="/checkout">
+              <button className="btn hover:bg-blue-700  lg:w-[440px] bg-orange-600 text-white mt-3">
+                Buy Now
+              </button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="btn hover:bg-blue-700  lg:w-[440px] bg-orange-600 text-white mt-3">
+                Buy Now
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

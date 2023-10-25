@@ -3,24 +3,41 @@ import "./Carousel.css";
 
 const Carousel = () => {
   return (
-    <div className="slides">
-      <div className="slide slide-1">
+    <div className="slides lg:w-full lg:h-[600px]">
+      <div className="slide slide-1 lg:w-full lg:h-[600px]">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK6W_z662IFKSueEiBedpiWe4HJt6a7HcIkA&usqp=CAU"
+          src="https://dkpcricketonline.com/cdn/shop/files/Homepage_Sqaure_2_All_Equipment_1400x.jpg?v=1672046405"
           alt=""
         />
       </div>
-      <div className="slide slide-2">
+
+      <div className="slide slide-2 lg:w-full lg:h-[600px]">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAEM4eTLgBO1VdOLRLbszLy7KihT0NIkCpcMxhKisiW5Rqw2v6pcxZL51bJnY91fLuWWw&usqp=CAU"
+          src="https://c8.alamy.com/comp/C99MY8/interior-of-the-shop-at-headingley-home-of-yorkshire-cricket-club-C99MY8.jpg"
           alt=""
         />
       </div>
-      <div className="slide slide-3">
+
+      <div className="slide slide-3 lg:w-full lg:h-[600px]">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-CRSNhhmarsSG46dU2OjDRwheNi6j6fkTK8P1SB5_EWXJvWGyP-rEAG3nXsPeNrc8_mY&usqp=CAU"
+          src="https://c8.alamy.com/comp/2PYF9NP/cricket-wireless-store-in-modesto-california-usa-an-att-company-providing-low-cost-cellular-service-2PYF9NP.jpg"
           alt=""
         />
+      </div>
+      <div className="slide slide-4 lg:w-full lg:h-[600px]">
+        <img
+          src="https://i.ytimg.com/vi/QbInRnN_MIY/maxresdefault.jpg"
+          alt=""
+        />
+      </div>
+      <div className="slide slide-5 lg:w-full lg:h-[600px]">
+        <img
+          src="https://cdn11.bigcommerce.com/s-tj87duh98/product_images/uploaded_images/zirakpure-store-8-.jpeg"
+          alt=""
+        />
+      </div>
+      <div className="slide slide-6 lg:w-full lg:h-[600px]">
+        <img src="https://wallpaperaccess.com/full/1088599.jpg" alt="" />
       </div>
     </div>
   );

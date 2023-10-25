@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
 import { FaFacebook } from "react-icons/fa";
-import { MdOutlineAccountCircle } from "react-icons/md";
+import { MdAccountCircle, MdOutlineAccountCircle } from "react-icons/md";
 import { BiHelpCircle } from "react-icons/bi";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
@@ -9,8 +9,14 @@ import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { TbShoppingCartOff } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { LuLogOut } from "react-icons/lu";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
+
   const { isLoading, data: orders = [] } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
@@ -19,6 +25,16 @@ const Navbar = () => {
       return data;
     },
   });
+
+  const handleLogOut = () => {
+    logout()
+      .then(() => {
+        toast.success("Logout Successful");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   return (
     <>
@@ -83,18 +99,48 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end lg:w-[331px]">
-          <Link to="/login" className="border-r-2 border-slate-400 pr-3">
-            <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:ml-[30px] " />
-            <p>My Account</p>
-          </Link>
+          {user ? (
+            <div className="dropdown border-r-2 border-slate-400 pr-3 ">
+              <label tabIndex={0} className="hover:cursor-pointer">
+                <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:ml-[15px] " />
+                {user ? <p>{user.displayName}</p> : <p>My Account</p>}
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <div
+                    className="text-lg font-semibold"
+                    onClick={() => handleLogOut()}
+                  >
+                    <LuLogOut className="text-2xl font-semibold" /> Logout
+                  </div>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login" className=" border-r-2 border-slate-400 pr-3">
+              <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:mx-[30px]" />
+              {user ? <p>{user.displayName}</p> : <p>My Account</p>}
+            </Link>
+          )}
+
           <Link to="/" className="border-r-2 border-slate-400 px-3">
             <BiHelpCircle className="w-[28px] h-[28px] lg:ml-[37px]" />
             <p>Customer Help</p>
           </Link>
-          <Link to="/checkout" className="pl-3">
-            <FiArrowRightCircle className="w-[28px] h-[28px] lg:ml-[18px]" />
-            <p>Checkout</p>
-          </Link>
+          {user ? (
+            <Link to="/checkout" className="pl-3">
+              <FiArrowRightCircle className="w-[28px] h-[28px] lg:ml-[18px]" />
+              <p>Checkout</p>
+            </Link>
+          ) : (
+            <Link to="/login" className="pl-3">
+              <FiArrowRightCircle className="w-[28px] h-[28px] lg:ml-[18px]" />
+              <p>Checkout</p>
+            </Link>
+          )}
         </div>
       </div>
       <div className="py-3 navbar3rdpart flex justify-between px-6 lg:pl-[60px] lg:pr-[90px]">
@@ -125,13 +171,13 @@ const Navbar = () => {
             <div className="drawer-content flex">
               {/* Page content here */}
               <label
-                className="text-lg font-semibold text-white"
+                className="text-lg font-semibold text-white  hover:cursor-pointer"
                 htmlFor="my-drawer-4"
               >
                 {orders?.length}
               </label>
               <label htmlFor="my-drawer-4">
-                <AiOutlineShopping className="w-[28px] h-[28px] ml-1 text-orange-400" />
+                <AiOutlineShopping className="w-[28px] h-[28px] ml-1 text-orange-400  hover:cursor-pointer" />
               </label>
             </div>
             <div className="drawer-side z-10">
@@ -181,7 +227,7 @@ const Navbar = () => {
 
                       <h2 className="text-lg font-semibold text-green-600 text-center">
                         There are no products here , please add products to the
-                        card
+                        cart
                       </h2>
                     </div>
                   )}
@@ -195,12 +241,21 @@ const Navbar = () => {
                       View Cart
                     </button>
                   </Link>
-                  <Link to="/checkout">
-                    {" "}
-                    <button className="btn bg-cyan-700 text-white w-full hover:bg-rose-800 mt-2">
-                      Checkout
-                    </button>
-                  </Link>
+                  {user ? (
+                    <Link to="/checkout">
+                      {" "}
+                      <button className="btn bg-cyan-700 text-white w-full hover:bg-rose-800 mt-2">
+                        Checkout
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link to="/login">
+                      {" "}
+                      <button className="btn bg-cyan-700 text-white w-full hover:bg-rose-800 mt-2">
+                        Checkout
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
