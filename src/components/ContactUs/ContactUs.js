@@ -12,7 +12,7 @@ const ContactUs = () => {
           className="w-full objectFit lg:h-[456px]"
         />
       </div>
-      <div className="lg:px-[104px] pb-10">
+      <div className="lg:px-[104px] pb-10 lg:mx-0 mx-6">
         <h1 className="text-3xl font-semibold py-5 text-center">Contact Us</h1>
         <p className="py-3 text-xl font-semibold">
           Website :

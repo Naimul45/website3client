@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 const AllProductsCard = ({ product }) => {
   // console.log("product : ", product);
   return (
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:mx-0 mx-4">
       <Link
         to={`/especipicproduct/${product._id}`}
-        className="lg:w-[274px] lg:h-[278px]"
+        className="lg:w-[274px] w-full lg:h-[278px] h-[300px]"
       >
         <img
-          class="rounded-t-lg lg:w-[274px] lg:h-[278px]"
+          class="rounded-t-lg lg:w-[274px] w-full lg:h-[278px] h-[326px] "
           src={product?.img}
           alt=""
         />

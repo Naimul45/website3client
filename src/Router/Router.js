@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 import Checkout from "../components/Checkout/Checkout";
 import ContactUs from "../components/ContactUs/ContactUs";
 import DetailsProducts from "../components/DetailsProduct/DetailsProducts";

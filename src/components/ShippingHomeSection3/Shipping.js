@@ -6,7 +6,7 @@ const Shipping = () => {
   return (
     <div>
       <hr className="mt-10 mb-6" />
-      <div className="flex justify-between lg:mx-[95px]">
+      <div className="grid lg:grid-cols-4 grid-cols-1 lg:mx-[95px] mx-4">
         <div className="flex">
           <GrLocation className="text-xl mr-3 font-semibold mt-[5px]" />
           <div>
@@ -16,7 +16,7 @@ const Shipping = () => {
             </h3>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex lg:mt-0 mt-4">
           <GrLocation className="text-xl mr-3 font-semibold mt-[5px]" />
           <div>
             <h3 className="text-base font-semibold">
@@ -25,7 +25,7 @@ const Shipping = () => {
             </h3>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex lg:mt-0 mt-4">
           <GrLocation className="text-xl mr-3 font-semibold mt-[5px]" />
           <div>
             <h3 className="text-base font-semibold">
@@ -33,7 +33,7 @@ const Shipping = () => {
             </h3>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex lg:mt-0 mt-4">
           <GrSecure className="text-xl mr-3 font-semibold mt-[5px]" />
           <div>
             <h3 className="text-base font-semibold">

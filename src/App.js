@@ -3,6 +3,7 @@ import "./App.css";
 import router from "./Router/Router";
 import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+
 function App() {
   return (
     <>

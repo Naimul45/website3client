@@ -12,16 +12,18 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { LuLogOut } from "react-icons/lu";
 import toast from "react-hot-toast";
+import Loading from "../components/Loading/Loading";
+import { AiOutlineHome } from "react-icons/ai";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   console.log(user);
 
   const { isLoading, data: orders = [] } = useQuery({
-    queryKey: ["orders"],
+    queryKey: ["orders", user?.email],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/addtocart");
-      const data = await res.json();
+      const res = await fetch(`http://localhost:5000/addtocart?${user?.email}`);
+      const data = res.json();
       return data;
     },
   });
@@ -47,7 +49,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="navbar bg-base-100 lg:ml-[50px] py-4">
+      <div className="navbar bg-base-100 lg:pl-[40px] py-4 flex">
         <div className="">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -68,21 +70,32 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-52"
             >
-              <label className="bg-base-200 px-3 rounded">
-                <BiSearch className="text-2xl mt-3" />
-              </label>
-              <input
-                type="text"
-                name=""
-                id=""
-                className="border-solid border border-slate-500 py-2 text-lg text-black font-semibold rounded lg:w-[680px] pl-3 bg-base-100"
-                placeholder="Search Products..."
-              />
+              <Link to="/" className="flex">
+                <AiOutlineHome className="text-2xl font-semibold mt-[3px]" />
+                <p className="text-xl font-semibold ml-1">Home</p>
+              </Link>
+              <Link to="/" className="flex">
+                <BiHelpCircle className="text-2xl font-semibold mt-[3px]" />
+                <p className="text-xl font-semibold ml-1">Customer Help</p>
+              </Link>
+              {user ? (
+                <Link to="/checkout" className="flex">
+                  <FiArrowRightCircle className="text-2xl font-semibold mt-[3px]" />
+                  <p className="text-xl font-semibold ml-1"> Checkout</p>
+                </Link>
+              ) : (
+                <Link to="/login" className="flex">
+                  <FiArrowRightCircle className="text-2xl font-semibold mt-[3px]" />
+                  <p className="text-xl font-semibold ml-1">Checkout</p>
+                </Link>
+              )}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Sports Store</a>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            Sports Store
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 pl-10">
@@ -100,9 +113,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end lg:w-[331px]">
           {user ? (
-            <div className="dropdown border-r-2 border-slate-400 pr-3 ">
+            <div className="dropdown dropdown-end lg:border-r-2 lg:border-slate-400 lg:pr-3 pr-6">
               <label tabIndex={0} className="hover:cursor-pointer">
-                <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:ml-[15px] " />
+                <MdOutlineAccountCircle className="w-[28px] h-[28px] mx-[35%] " />
                 {user ? <p>{user.displayName}</p> : <p>My Account</p>}
               </label>
               <ul
@@ -120,47 +133,71 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/login" className=" border-r-2 border-slate-400 pr-3">
-              <MdOutlineAccountCircle className="w-[28px] h-[28px] lg:mx-[30px]" />
+            <Link
+              to="/login"
+              className=" border-r-2 border-slate-400 lg:pr-3  pr-6"
+            >
+              <MdOutlineAccountCircle className="w-[28px] h-[28px] mx-[35%]" />
               {user ? <p>{user.displayName}</p> : <p>My Account</p>}
             </Link>
           )}
 
-          <Link to="/" className="border-r-2 border-slate-400 px-3">
+          <Link
+            to="/"
+            className="border-r-2 border-slate-400 px-3 lg:block hidden"
+          >
             <BiHelpCircle className="w-[28px] h-[28px] lg:ml-[37px]" />
             <p>Customer Help</p>
           </Link>
           {user ? (
-            <Link to="/checkout" className="pl-3">
+            <Link to="/checkout" className="pl-3 lg:block hidden">
               <FiArrowRightCircle className="w-[28px] h-[28px] lg:ml-[18px]" />
               <p>Checkout</p>
             </Link>
           ) : (
-            <Link to="/login" className="pl-3">
+            <Link to="/login" className="pl-3 lg:block hidden">
               <FiArrowRightCircle className="w-[28px] h-[28px] lg:ml-[18px]" />
               <p>Checkout</p>
             </Link>
           )}
         </div>
       </div>
-      <div className="py-3 navbar3rdpart flex justify-between px-6 lg:pl-[60px] lg:pr-[90px]">
+      <div className="py-3 navbar3rdpart flex justify-between lg:px-6 px-3 lg:pl-[60px] lg:pr-[90px] ">
         <div className="flex">
-          <Link to="/" className="pl-4 text-lg font-semibold text-white">
+          <Link
+            to="/"
+            className="lg:pl-4  text-lg font-semibold text-white lg:block hidden"
+          >
             Home
           </Link>
           <Link
             to="/shopallproducts"
-            className="pl-4 text-lg font-semibold text-white"
+            className="lg:pl-4  text-lg font-semibold text-white lg:block hidden"
           >
             Shop (All Products)
           </Link>
           <Link
+            to="/shopallproducts"
+            className="lg:pl-4 pl-4 text-lg font-semibold text-white lg:hidden block"
+          >
+            All Products
+          </Link>
+          <Link
             to="/contactus"
-            className="pl-4 text-lg font-semibold text-white"
+            className="lg:pl-4 pl-4 text-lg font-semibold text-white lg:block hidden"
           >
             Contact Us
           </Link>
-          <Link to="/orders" className="pl-4 text-lg font-semibold text-white">
+          <Link
+            to="/contactus"
+            className="lg:pl-4 pl-4 text-lg font-semibold text-white lg:hidden block"
+          >
+            Contact
+          </Link>
+          <Link
+            to="/orders"
+            className="lg:pl-4 pl-4 text-lg font-semibold text-white"
+          >
             Cart
           </Link>
         </div>
