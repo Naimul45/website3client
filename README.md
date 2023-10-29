@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Faced with problems
 
-carousel er code bujhi na
+1.carousel er code bujhi na
+2.product er price gula filter er kaj kori nai and eta pari ooo na.
 
 <!-- ## Available Scripts
 

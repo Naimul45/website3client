@@ -13,8 +13,20 @@ import { Link } from "react-router-dom";
 
 import { AiOutlineHome } from "react-icons/ai";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { BiSearch } from "react-icons/bi";
+
+const getFilteredProducts = (query, products) => {
+  if (!query) {
+    return products;
+  }
+  return products.filter((product) =>
+    product.product_name.toLowerCase().includes(query)
+  );
+};
 
 const ShopAllProducts = () => {
+  const [query, setQuery] = useState("");
+
   const { user } = useContext(AuthContext);
   const [category, setCategory] = useState("");
   const data = useLoaderData();
@@ -33,6 +45,8 @@ const ShopAllProducts = () => {
     }
   });
 
+  const filteredItems = getFilteredProducts(query, products);
+
   return (
     <>
       <div>
@@ -42,6 +56,25 @@ const ShopAllProducts = () => {
           className="lg:h-[490px] objectFit w-full"
         />
       </div>
+      <div className="lg:mx-[104px]  lg:flex hidden justify-between  lg:flex-row flex-col ">
+        <h2 className="lg:text-3xl text-lg font-bold mt-6">Products</h2>
+        <div className="navbar-center  flex mt-3">
+          <ul className="menu menu-horizontal flex ">
+            <label className="bg-base-200 px-3 rounded lg:h-[50px] h-[40px]">
+              <BiSearch className="text-2xl  lg:h-[50px] h-[40px] lg:ml-0 ml-[3px]" />
+            </label>
+            <input
+              type="text"
+              name=""
+              id=""
+              className="border-solid border border-slate-500  text-lg text-black font-semibold rounded lg:w-[320px] w-[285px] lg:h-[46px] h-[40px] pl-3 bg-base-100"
+              placeholder="Search Products..."
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </ul>
+        </div>
+      </div>
+
       <div className="flex lg:mx-[104px] mt-6 lg:flex-row flex-col">
         <div className="lg:w-[275px] bg-base-200 lg:h-[458px] h-[200px] lg:mr-3 rounded lg:block sticky top-[-1px]">
           <div className="p-4">
@@ -160,9 +193,28 @@ const ShopAllProducts = () => {
             </div>
           </div>
         </div>
+        <hr className="text-lg font-bold " />
+        <div className=" lg:hidden flex justify-between  flex-col sticky top-[198px] bg-base-200 ">
+          <h2 className="text-xl font-bold mt-4 pl-3">Products</h2>
+          <div className="navbar-center  flex mt-3">
+            <ul className="menu menu-horizontal flex ">
+              <label className="bg-purple-600 px-3 rounded lg:h-[50px] h-[40px]">
+                <BiSearch className="text-2xl  lg:h-[50px] h-[40px] lg:ml-0 ml-[3px] text-white" />
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                className="border-solid border border-slate-500  text-lg text-black font-semibold rounded lg:w-[320px] w-[285px] lg:h-[46px] h-[40px] pl-3 bg-base-100"
+                placeholder="Search Products..."
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </ul>
+          </div>
+        </div>
         <div className="grid lg:grid-cols-3 gap-3 lg:mt-0 mt-4">
-          {products.length ? (
-            products.map((product) => (
+          {filteredItems.length ? (
+            filteredItems.map((product) => (
               <ShopAllProduct product={product} data={data}></ShopAllProduct>
             ))
           ) : (
@@ -172,7 +224,6 @@ const ShopAllProducts = () => {
           )}
         </div>
       </div>
-
       <Shipping></Shipping>
     </>
   );
