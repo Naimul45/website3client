@@ -16,3 +16,8 @@
   object-fit: cover;
   object-position: center;
 }
+.footerBackgroundColor{
+  
+  background-color: #333c8b;
+  color: white
+}

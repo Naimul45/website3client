@@ -12,7 +12,7 @@ const ShopAllProduct = ({ product }) => {
         className="lg:w-[274px] w-full lg:h-[278px] h-[300px]"
       >
         <img
-          class="rounded-t-lg lg:w-[274px] w-full lg:h-[278px] h-[326px] "
+          class="rounded-t-lg  w-full lg:h-[278px] h-[326px] "
           src={product?.img}
           alt=""
         />

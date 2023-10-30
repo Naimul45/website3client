@@ -23,8 +23,8 @@ const Orders = () => {
     },
   });
 
-  const handleDelete = () => {
-    fetch("http://localhost:5000/addtocart", {
+  const handleDelete = (order) => {
+    fetch(`http://localhost:5000/addtocart?id=${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -83,7 +83,7 @@ const Orders = () => {
                     <td className="px-6 py-4">
                       <p
                         className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
-                        onClick={() => handleDelete()}
+                        onClick={() => handleDelete(order)}
                       >
                         Remove
                       </p>

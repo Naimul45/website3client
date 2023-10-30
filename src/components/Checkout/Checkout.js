@@ -173,13 +173,13 @@ const Checkout = () => {
       )}
 
       <div className="mt-10">
-        <h1 className="text-2xl text-green-600 font-semibold mb-4 ">
+        <h1 className="text-2xl text-green-600 font-semibold mb-4 ml-[15px] ">
           Your Order
         </h1>
         <div>
           {orders?.length ? (
             orders.map((order) => (
-              <div className=" overflow-x-auto shadow-md sm:rounded-lg lg:mx-[104px]">
+              <div className=" overflow-x-auto shadow-md sm:rounded-lg lg:mx-[16px]">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <tbody>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -193,10 +193,8 @@ const Checkout = () => {
                         </div>
                       </td>
 
-                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white lg:w-[490px] w-[220px]">
-                        <p className="lg:w-[490px] w-[220px]">
-                          {order?.productName}
-                        </p>
+                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white w-[160px] ">
+                        <p className="w-[160px] ">{order?.productName}</p>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center space-x-3">

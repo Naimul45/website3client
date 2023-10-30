@@ -18,7 +18,7 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   console.log(user);
 
-  const { data: orders = [] } = useQuery({
+  const { refetch, data: orders = [] } = useQuery({
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/addtocart?${user?.email}`);
@@ -34,6 +34,18 @@ const Navbar = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+      });
+  };
+
+  const handleDelete = (order) => {
+    fetch(`http://localhost:5000/addtocart?id=${order._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Your product has been successfully deleted");
+        refetch();
       });
   };
 
@@ -66,6 +78,7 @@ const Navbar = () => {
               />
             </svg>
           </label>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-52"
@@ -202,17 +215,26 @@ const Navbar = () => {
               </label>
             </div>
             <div className="drawer-side z-10">
-              <label
-                htmlFor="my-drawer-4"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              >
-                x
-              </label>
-              <div className="p-4 lg:w-[370px] min-h-full sidebarBackground text-base-content ">
-                <h3 className="text-lg font-semibold px-3 mb-2">
-                  Shopping Cart
-                </h3>
+              <div className="p-4 lg:w-[370px] w-[300px] min-h-full sidebarBackground text-base-content ">
+                <label
+                  htmlFor="my-drawer-4"
+                  aria-label="close sidebar"
+                  className="drawer-overlay"
+                >
+                  {/* x */}
+                </label>
+                <div className="flex justify-between">
+                  <h3 className="text-lg font-semibold px-3 mb-2">
+                    Shopping Cart
+                  </h3>
+                  <label
+                    htmlFor="my-drawer-4"
+                    aria-label="close sidebar"
+                    className="drawer-overlay text-4xl font-semibold mt-[-8px]"
+                  >
+                    x
+                  </label>
+                </div>
                 <hr />
 
                 <div>
@@ -220,12 +242,16 @@ const Navbar = () => {
                     orders?.map((order) => (
                       <>
                         <div className="flex py-3 justify-between">
-                          <label htmlFor="" className="text-lg font-semibold">
+                          <label
+                            htmlFor=""
+                            className="text-xl hover:cursor-pointer font-semibold"
+                            onClick={() => handleDelete(order)}
+                          >
                             x
                           </label>
 
                           <div>
-                            <p className="text-base font-semibold lg:w-[256px]">
+                            <p className="text-base font-semibold lg:w-[256px] w-[200px]">
                               {order?.productName.slice(0, 31)}
                             </p>
                             <p className="text-base font-semibold text-slate-500">

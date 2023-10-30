@@ -32,20 +32,20 @@ const AllProducts = () => {
   }
   return (
     <div>
-      <div className="flex justify-between lg:mx-[104px] mt-6">
-        <h1 className="text-3xl font-bold text-center my-6">
+      <div className="flex lg:flex-row flex-col justify-between lg:mx-[104px] mt-6">
+        <h1 className="lg:text-3xl text-2xl  font-bold text-center lg:my-6 my-2">
           Our All Products
         </h1>
-        <div className="navbar-center hidden lg:flex mt-3">
-          <ul className="menu menu-horizontal px-1 pl-10">
-            <label className="bg-base-200 px-3 rounded lg:h-[50px]">
-              <BiSearch className="text-2xl  lg:h-[50px]" />
+        <div className="navbar-center  flex  lg:mt-3">
+          <ul className="menu menu-horizontal lg:px-1 lg:pl-10 pl-[20px]">
+            <label className="bg-purple-600 px-3 rounded lg:h-[45px] h-[40px]">
+              <BiSearch className="text-2xl  lg:h-[45px] h-[40px] text-white" />
             </label>
             <input
               type="text"
               name=""
               id=""
-              className="border-solid border border-slate-500  text-lg text-black font-semibold rounded lg:w-[320px] lg:h-[46px] pl-3 bg-base-100"
+              className="border-solid border border-slate-500  text-lg text-black font-semibold rounded lg:w-[320px] w-[272px] lg:h-[45px] h-[40px] pl-3 bg-base-100"
               placeholder="Search Products..."
               onChange={(e) => setQuery(e.target.value)}
             />

@@ -6,6 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1.carousel er code bujhi na
 2.product er price gula filter er kaj kori nai and eta pari ooo na.
+3.order page or cart page reload korle order sob cole jay , 0 te cole ase.
+4.categories product a category kono product er nam a click korle se nam er product gulo website a dekhate jhamela kore.
+5.product er detail page a jokhon amra jai tokhon se product ti zoom kore comotkar vabe kora jay.je kaj ta ami korte pari nai. eta kibhabe kore ?
+6.product er detail page a jokhon amra jai tokhon oi product er aro kichu picture niche deya thake , jeta ami kori nai . eta kibhabe kore?
+7.related products show koranor kaj ti kora hoy nai
+8.review er kaj ti ooo kora hoy nai , jeta caile ami korte partam .
+9.ami amar website a ekhono paymentGetWay method use kori nai.
 
 <!-- ## Available Scripts
 
